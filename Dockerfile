@@ -6,10 +6,10 @@ RUN set -x \
     && sed -i '0,/^URIs.*/{s!^URIs.*!URIs: https://mirrors.tuna.tsinghua.edu.cn/debian!}' /etc/apt/sources.list.d/debian.sources \
     && sed -i '0,/^Components.*/{s!^Components.*!Components: main contrib non-free non-free-firmware!}' /etc/apt/sources.list.d/debian.sources \
     && buildDeps="           emacs fd-find ripgrep" \
-    && buildDeps="$buildDeps git ssh curl" \
+    && buildDeps="$buildDeps git ssh curl unzip file" \
     && buildDeps="$buildDeps gcc" \
-    && buildDeps="$buildDeps vim powerline" \
-    && buildDeps="$buildDeps python3 python3-requests ipython3" \
+    && buildDeps="$buildDeps vim-nox powerline" \
+    && buildDeps="$buildDeps python3 python3-pip python3-venv python-is-python3 ipython3" \
     && buildDeps="$buildDeps sudo tmux" \
     && buildDeps="$buildDeps locales" \
     && buildDeps="$buildDeps nodejs npm" \
