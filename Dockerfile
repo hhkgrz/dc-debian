@@ -3,8 +3,6 @@ FROM debian:trixie
 RUN set -x \
     && apt-get update \
     && apt-get install -y apt-transport-https ca-certificates gnupg2 \
-    && sed -i '0,/^URIs.*/{s!^URIs.*!URIs: https://mirrors.tuna.tsinghua.edu.cn/debian!}' /etc/apt/sources.list.d/debian.sources \
-    && sed -i '0,/^Components.*/{s!^Components.*!Components: main contrib non-free non-free-firmware!}' /etc/apt/sources.list.d/debian.sources \
     && buildDeps="           emacs fd-find ripgrep" \
     && buildDeps="$buildDeps git ssh curl unzip file" \
     && buildDeps="$buildDeps gcc" \
