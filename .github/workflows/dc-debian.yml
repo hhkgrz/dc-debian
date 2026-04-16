@@ -3,6 +3,8 @@ name: build-push-dc-debian
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'Dockerfile'
   workflow_dispatch:
 
 jobs:

@@ -1,2 +1,2 @@
 # dc-debian
-debian dev container environment
+debian docker environment
