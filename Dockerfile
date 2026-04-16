@@ -26,6 +26,3 @@ RUN set -x \
     && passwd -d hhkg \
     && passwd -e hhkg \
     && echo 'hhkg ALL=(ALL:ALL) ALL' > /etc/sudoers.d/hhkg
-
-USER hhkg
-WORKDIR /home/hhkg
