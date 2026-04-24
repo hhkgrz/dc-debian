@@ -11,10 +11,12 @@ RUN set -x \
     && buildDeps="$buildDeps sudo tmux" \
     && buildDeps="$buildDeps locales" \
     && buildDeps="$buildDeps nodejs npm" \
-    && apt-get update \
     && DEBIAN_FRONTEND="noninteractive" apt-get install -y $buildDeps \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
+    && sed -i '0,/^URIs.*/{s!^URIs.*!URIs: https://mirrors.tuna.tsinghua.edu.cn/debian!}' /etc/apt/sources.list.d/debian.sources \
+    && sed -i '0,/^Components.*/{s!^Components.*!Components: main contrib non-free non-free-firmware!}' /etc/apt/sources.list.d/debian.sources \
+    && apt-get update \
     && sed -e 's/^# *\(en_US.UTF-8\)/\1/' -i /etc/locale.gen \
     && locale-gen \
     && update-locale LANG=en_US.UTF-8 \
