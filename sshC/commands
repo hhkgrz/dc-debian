@@ -1,0 +1,30 @@
+image_name=<image_name>
+container_name=<container_name>
+home_volume=<home_volume>
+local_share_dir=<local_share_dir>
+local_port=<local_port>
+
+
+# host with new image, not necessary
+## docker build -t <image_name>:test . # use Dockerfile in current dir
+## docker volume create <home_volume>
+## docker run -it -p <local_port>:22 --name <container_name> -h <container_name> -v <local_share_dir>:/hhkg_share -v <home_volume>:/home/hhkg <image_name>:test /bin/bash --login
+# docker create -it -p <local_port>:22 --name <container_name> -h <container_name> -v <local_share_dir>:/hhkg_share -v <home_volume>:/home/hhkg <image_name>:test
+# docker start <container_name>
+# docker exec -it <container_name> /bin/bash --login
+# docker stop <container_name>
+# docker rm <container_name>
+
+
+# host with base image
+# docker volume create <home_volume>
+# docker run -it --expose 22 -p <local_port>:22 --name <container_name> -h <container_name> -v <local_share_dir>:/hhkg_share -v <home_volume>:/home/hhkg <image_name>:test /usr/sbin/sshd -D
+docker create -it --expose 22 -p <local_port>:22 --name <container_name> -h <container_name> -v <home_volume>:/home/hhkg hhkg/dc-debian /usr/sbin/sshd -D
+docker start <container_name>
+docker exec -it <container_name> /bin/bash --login
+docker stop <container_name>
+docker rm <container_name>
+
+# root in container
+ps -ef
+kill <sshd_pid>
