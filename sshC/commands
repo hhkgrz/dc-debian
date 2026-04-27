@@ -20,7 +20,7 @@ pub_key='<pub_key>'
 # host with base image
 # docker volume create <home_volume>
 # docker run -it --expose 22 -p <local_port>:22 --name <container_name> -h <container_name> -v <local_share_dir>:/hhkg_share -v <home_volume>:/home/hhkg <image_name>:test /usr/sbin/sshd -D
-docker create -it --expose 22 -p <local_port>:22 --name <container_name> -h <container_name> -v <home_volume>:/home/hhkg hhkg/dc-debian /usr/sbin/sshd -D
+docker create -it --expose 22 -p <local_port>:22 --name <container_name> -h <container_name> -v <local_share_dir>:/hhkg_share -v <home_volume>:/home/hhkg hhkg/dc-debian /usr/sbin/sshd -D
 docker start <container_name>
 docker exec -it <container_name> /bin/bash --login
 docker stop <container_name>
