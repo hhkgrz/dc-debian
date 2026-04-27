@@ -22,7 +22,7 @@ RUN set -x \
     && update-locale LANG=en_US.UTF-8 \
     && update-locale LC_ALL=en_US.UTF-8 \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && useradd --umask 0022 -m -s /bin/bash hhkg \
+    && useradd -m -s /bin/bash hhkg \
     && passwd -d hhkg \
     && passwd -e hhkg \
     && echo 'hhkg ALL=(ALL:ALL) ALL' > /etc/sudoers.d/hhkg
