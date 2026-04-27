@@ -3,6 +3,7 @@ container_name=<container_name>
 home_volume=<home_volume>
 local_share_dir=<local_share_dir>
 local_port=<local_port>
+pub_key='<pub_key>'
 
 
 # host with new image, not necessary
@@ -24,6 +25,19 @@ docker start <container_name>
 docker exec -it <container_name> /bin/bash --login
 docker stop <container_name>
 docker rm <container_name>
+
+
+# set pub key after docker exec
+su hhkg
+cd
+mkdir -m 700 ~/.ssh
+touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
+echo '<pub_key>' >> ~/.ssh/authorized_keys
+
+
+# ssh
+ssh -A hhkg@localhost -p <local_port>
+
 
 # root in container
 ps -ef
